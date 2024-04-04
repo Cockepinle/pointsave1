@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using POINT.ViewModel.Helpers;
 
 namespace POINT.ViewModel
@@ -13,9 +7,10 @@ namespace POINT.ViewModel
     {
         public ICommand Start { get; set; }
         public MainWindow Window { get; set; }
-        public MainViewModel()
+        public MainViewModel(MainWindow Window)
         {
             Start = new BindableCommand(StartMoment);
+            this.Window = Window;
         }
         public void StartMoment(object parameter)
         {

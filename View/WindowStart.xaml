@@ -21,7 +21,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Canvas x:Name="canvas" Grid.Column="1" Grid.RowSpan="4" Height="400" VerticalAlignment="Center" Background="#FFFF">
+        <Canvas x:Name="canvas" Grid.Column="1" Grid.RowSpan="4" Background="#FFFF">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="MouseDown">
                     <i:InvokeCommandAction Command="{Binding Down}" CommandParameter="{Binding ElementName=canvas}"/>

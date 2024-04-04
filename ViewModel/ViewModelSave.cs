@@ -14,23 +14,18 @@ namespace POINT.ViewModel
     internal class ViewModelSave : Helpers.BindingHelper
     {
         public ICommand Save { get; set; }
-        private bool buttonClicked = false;
-        public ViewModelSave() 
+        public WindowSave Window { get; set; }
+        public ViewModelSave(WindowSave Window) 
         {
             Save = new BindableCommand(SaveEnd);
+            this.Window = Window;
         }
-       
+
         public void SaveEnd(object parameters)
         {
-            buttonClicked = true;
-
-            if (Application.Current.MainWindow is Window saveWindow)
-            {
-                saveWindow.Close();
-            }
-
             WindowStart windowStart = new WindowStart();
             windowStart.Show();
+            Window.Close();
         }
 
     }

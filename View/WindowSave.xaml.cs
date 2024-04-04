@@ -23,7 +23,7 @@ namespace POINT
         public WindowSave()
         {
             InitializeComponent();
-            DataContext = new ViewModelSave();
+            DataContext = new ViewModelSave(this);
         }
     }
 }

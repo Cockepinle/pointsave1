@@ -21,7 +21,7 @@
             BACK DRAWING
         </Button>
         <GroupBox Grid.Row="0" Header="" Style="{StaticResource MaterialDesignGroupBox}">
-            <TextBlock VerticalAlignment="Center" Text="The save was successful!" FontSize="30" FontFamily="Sitka Small" Width="379"/>
+            <TextBlock VerticalAlignment="Center" Text="The save was successful!" FontSize="30" FontFamily="Sitka Small" Width="379" ScrollViewer.HorizontalScrollBarVisibility="Visible" TextWrapping="Wrap"/>
         </GroupBox>
     </Grid>
 </Window>

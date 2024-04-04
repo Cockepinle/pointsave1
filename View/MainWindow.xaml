@@ -16,9 +16,9 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <GroupBox Grid.Row="0" Header="" Style="{StaticResource MaterialDesignGroupBox}">
-            <TextBlock VerticalAlignment="Center" Text="Welcome to our program, I hope you enjoy it!" FontSize="30" FontFamily="Sitka Small" Width="714"/>
+            <TextBlock VerticalAlignment="Center" Text="Welcome to our program, I hope you enjoy it!" FontSize="30" FontFamily="Sitka Small" Width="714" TextWrapping="Wrap" ScrollViewer.HorizontalScrollBarVisibility="Visible"/>
         </GroupBox>
-        <Button Grid.Row="2" VerticalAlignment="Center"
+        <Button Grid.Row="2" VerticalAlignment="Center" 
           Content="START DRAWING"
           Style="{StaticResource MaterialDesignFlatLightBgButton}"
           ToolTip="MaterialDesignFlatLightButton" Height="217" FontSize="20" FontFamily="Sitka Small" Command="{Binding Start}"/>

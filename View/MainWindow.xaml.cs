@@ -25,7 +25,7 @@ namespace POINT
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = new MainViewModel();
+            DataContext = new MainViewModel(this);
         }
 
     }

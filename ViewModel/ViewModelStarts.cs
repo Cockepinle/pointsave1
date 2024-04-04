@@ -1,27 +1,13 @@
-﻿using DocumentFormat.OpenXml.Bibliography;
-using DocumentFormat.OpenXml.InkML;
-using MaterialDesignThemes.Wpf;
-using POINT.ViewModel.Helpers;
+﻿using POINT.ViewModel.Helpers;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shapes;
-using System.Windows.Controls; // Добавляем эту директиву, чтобы использовать пространство имен System.Windows.Controls
-using Xceed.Wpf.Toolkit;
 using System.Drawing.Imaging;
 using GalaSoft.MvvmLight.CommandWpf;
-using System.Security.RightsManagement;
-using DocumentFormat.OpenXml.Vml;
-using Nest;
 using System;
-using System.IO;
 using System.Windows.Media.Imaging;
 using System.Drawing;
-using System.Linq;
-
-//using BindingHelper = DevExpress.Data.Native.BindingHelper;
-//using Point = System.Windows.Point;
 
 namespace POINT.ViewModel
 {
@@ -38,6 +24,7 @@ namespace POINT.ViewModel
         public ICommand ShapeSelectionCommandCircle { get; set; }
         public ICommand ShapeSelectionCommandSquare { get; set; }
         public ICommand Save { get; set; }
+        public WindowStart Window { get; set; }
 
         private WindowStart startWindow;
         public ICommand Back { get; set; }
@@ -72,9 +59,9 @@ namespace POINT.ViewModel
             }
         }
 
-        public ViewModelStarts()
+        public ViewModelStarts(WindowStart Window)
         {
-            selectedColor = Colors.Black; // Устанавливаем начальное значение цвета
+            selectedColor = Colors.Black;
             Down = new BindableCommand(DownMoment);
             Up = new BindableCommand(UpMoment);
             Move = new BindableCommand(MoveMoment);
@@ -86,13 +73,14 @@ namespace POINT.ViewModel
             ShapeSelectionCommandSquare = new BindableCommand(CheckedSquare);
             Save = new BindableCommand(SaveMoment);
             Back = new BindableCommand(BackMoment);
+            this.Window = Window;
         }
 
         public void DownMoment(object canvas)
         {
             isDrawing = true;
             currentPoint = Mouse.GetPosition((System.Windows.Controls.Canvas)canvas);
-            currentCanvas = (System.Windows.Controls.Canvas)canvas; // Добавить эту строку
+            currentCanvas = (System.Windows.Controls.Canvas)canvas; 
         }
         public void UpMoment(object canvas)
         {
@@ -194,7 +182,7 @@ namespace POINT.ViewModel
 
             string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 
-            string fileName = $"your_image_name_{DateTime.Now.Ticks}.png"; // Добавляем временную метку к имени файла
+            string fileName = $"your_image_name_{DateTime.Now.Ticks}.png"; 
 
             string filePath = System.IO.Path.Combine(desktopPath, fileName);
 
@@ -208,14 +196,7 @@ namespace POINT.ViewModel
 
             WindowSave windowSave = new WindowSave();
             windowSave.Show();
-
-            windowSave.Loaded += (sender, e) =>
-            {
-                if (Application.Current.Windows.OfType<WindowStart>().FirstOrDefault() is WindowStart windowStart)
-                {
-                    windowStart.Close();
-                }
-            };
+            Window.Close();
         }
         public BitmapSource CaptureCanvas(UIElement canvas)
         {
@@ -237,7 +218,7 @@ namespace POINT.ViewModel
         {
             if (currentCanvas != null && currentCanvas.Children.Count > 0)
             {
-                int elementsToRemove = 10; // Указываем количество элементов для удаления
+                int elementsToRemove = 10;
                 for (int i = 0; i < elementsToRemove; i++)
                 {
                     if (currentCanvas.Children.Count > 0)
@@ -246,7 +227,7 @@ namespace POINT.ViewModel
                     }
                     else
                     {
-                        break; // Прерываем цикл если больше нет элементов для удаления
+                        break;
                     }
                 }
             }
