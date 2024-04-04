@@ -1,0 +1,26 @@
+﻿<Window x:Class="POINT.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:local="clr-namespace:POINT" xmlns:helpers="clr-namespace:POINT.ViewModel.Helpers"
+        mc:Ignorable="d"
+        Title="WindowStart" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <GroupBox Grid.Row="0" Header="" Style="{StaticResource MaterialDesignGroupBox}">
+            <TextBlock VerticalAlignment="Center" Text="Welcome to our program, I hope you enjoy it!" FontSize="30" FontFamily="Sitka Small" Width="714"/>
+        </GroupBox>
+        <Button Grid.Row="2" VerticalAlignment="Center"
+          Content="START DRAWING"
+          Style="{StaticResource MaterialDesignFlatLightBgButton}"
+          ToolTip="MaterialDesignFlatLightButton" Height="217" FontSize="20" FontFamily="Sitka Small" Command="{Binding Start}"/>
+    </Grid>
+</Window>
